@@ -8,3 +8,6 @@ dependencies = [
     "ruff>=0.14.3",
     "ty>=0.0.1a25",
 ]
+
+[tool.ruff.lint.isort]
+force-single-line = true

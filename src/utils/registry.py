@@ -15,10 +15,9 @@ def register_solution(name: str) -> Callable[[Solution], Solution]:
 
         SOLUTIONS[name] = func
         return func
+
     return decorator
 
 
 def valid_solution_name(name: str) -> bool:
-    if re.match(r"\d{4}-\d{1,2}[abc]", name) is None:
-        return False
-    return True
+    return re.match(r"\d{4}-\d{1,2}[abc]", name) is None

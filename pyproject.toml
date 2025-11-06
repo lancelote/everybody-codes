@@ -11,3 +11,18 @@ dependencies = [
 
 [tool.ruff.lint.isort]
 force-single-line = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # conflicts
+    "COM812", # conflicts with ruff format
+    "D203", # conflicts with D211
+    "D213", # conflicts with D212
+
+    # deselect
+    "ANN", # we are using a typechecker
+    "D", # documentation is not a concern for this project
+    "S", # security is not a concern for this project
+    "T201", # `print` usage is OK for this project
+]

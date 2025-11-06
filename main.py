@@ -5,8 +5,8 @@ from src.utils.registry import SOLUTIONS
 
 
 def get_task(year: str, day: str, part: str) -> str:
-    path = Path(".") / "notes" / f"year{year}" / f"day{day}{part}.txt"
-    with open(path, "r") as file:
+    path = Path() / "notes" / f"year{year}" / f"day{day}{part}.txt"
+    with path.open("r") as file:
         return file.read()
 
 

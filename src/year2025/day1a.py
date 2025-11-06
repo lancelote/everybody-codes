@@ -44,10 +44,7 @@ def solve(task: str) -> str:
         if instruction.direction is Direction.LEFT:
             shift = -1
 
-        i = i + shift * instruction.steps
-
-        if i < 0:
-            i = 0
+        i = max(i + shift * instruction.steps, 0)
 
         if i >= len(names):
             i = len(names) - 1

@@ -9,6 +9,9 @@ dependencies = [
     "ty>=0.0.1a25",
 ]
 
+[tool.ruff]
+line-length = 80
+
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [

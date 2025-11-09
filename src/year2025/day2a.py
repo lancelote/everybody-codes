@@ -1,6 +1,6 @@
+import math
 import re
 from dataclasses import dataclass
-from typing import Any
 
 from src.utils.registry import register_solution
 
@@ -10,13 +10,13 @@ class Complex:
     x: int
     y: int
 
-    def __add__(self, other: Any) -> Complex:
+    def __add__(self, other: object) -> Complex:
         if not isinstance(other, Complex):
             raise NotImplementedError
 
         return Complex(self.x + other.x, self.y + other.y)
 
-    def __mul__(self, other: Any) -> Complex:
+    def __mul__(self, other: object) -> Complex:
         if not isinstance(other, Complex):
             raise NotImplementedError
 
@@ -25,15 +25,28 @@ class Complex:
             self.x * other.y + self.y * other.x,
         )
 
-    def __truediv__(self, other: Any) -> Complex:
+    def __truediv__(self, other: object) -> Complex:
         if not isinstance(other, Complex):
             raise NotImplementedError
 
-        return Complex(self.x // other.x, self.y // other.y)
+        return Complex(
+            math.trunc(self.x / other.x),
+            math.trunc(self.y / other.y),
+        )
+
+    def __eq__(self, other: object) -> bool:
+        return (
+            isinstance(other, Complex)
+            and self.x == other.x
+            and self.y == other.y
+        )
+
+    def __hash__(self) -> int:
+        return hash((self.x, self.y))
 
     @classmethod
     def from_str(cls, line: str) -> Complex:
-        first, second = re.findall(r"\d+", line)
+        first, second = re.findall(r"-?\d+", line)
         return Complex(int(first), int(second))
 
 

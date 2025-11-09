@@ -9,9 +9,6 @@ dependencies = [
     "ty>=0.0.1a25",
 ]
 
-[tool.ruff.lint.isort]
-force-single-line = true
-
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
@@ -26,3 +23,10 @@ ignore = [
     "S", # security is not a concern for this project
     "T201", # `print` usage is OK for this project
 ]
+
+[tool.ruff.lint.isort]
+force-single-line = true
+
+[tool.ruff.lint.flake8-pytest-style]
+parametrize-values-type = "tuple"
+parametrize-names-type = "csv"
